@@ -1,0 +1,74 @@
+AGENCY REDO – web stranica (HTML + CSS + JS)
+============================================
+
+Pokretanje:
+  Otvori mapu u Visual Studio Codeu i otvori index.html u pregledniku
+  (dvoklik na datoteku ili ekstenzija "Live Server"). Ništa ne treba instalirati.
+  Fontovi: naslovi koriste Monument Extended – datoteke MonumentExtended-Regular.otf i
+  MonumentExtended-Ultrabold.otf moraju biti u mapi fonts/ (pored index.html).
+  Običan tekst je Source Sans 3 s Google Fonts (bez interneta koristi se rezervni font).
+
+Datoteke:
+  index.html    – naslovnica (crna)
+  about.html    – stranica About (bijela, crni tekst)
+  services.html – stranica Services (bijela, crni tekst)
+  projects.html – projekti po kategorijama (crna)
+  style.css     – izgled, responzivnost (mobitel ispod 768 px)
+  script.js     – sve animacije (bez ikakvih biblioteka)
+  slike/, video/ – slike, logo (slike/redo_multimediaagency1.png) i videi
+  fonts/        – Monument Extended (.otf)
+
+Zamjena blokova slikama:
+  Svaki obojeni blok je <div class="ph" data-label="...">.
+  Unutra samo dodaj sliku ili video, npr.:
+    <div class="ph" data-label="Slika 01"><img src="slike/galerija01.jpg" alt=""></div>
+  U kodu već postoje komentari <!-- <img src="..."> --> – samo makni <!-- i -->
+  i stavi svoju datoteku. Slika automatski popuni blok, a natpis nestane.
+
+  Slike u luku na naslovnici zadržavaju svoje dimenzije (1080x1350, 1080x1920,
+  1920x1080...) – blok se sam prilagodi omjeru slike.
+
+Kontakt na cijeloj stranici: os.agency.redo@gmail.com
+
+Naslovnica (index.html):
+  1. Loader (postotak učitavanja na sredini ekrana) – traje dok se ne učitaju sve
+     slike i videi (najmanje 1,2 s, najviše 15 s), zatim se podigne prema gore.
+  2. Fiksni header: Redo logo + MENU (pretvara se u CLOSE i X).
+  3. Kategorije (Advertising / Cinema / Experience design) odmah od vrha stranice:
+     zakvačena scena preko cijelog ekrana, "tekući" prijelaz između videa,
+     natpisi putuju prema gore, kontrole zvuka i pauze.
+  4. Rotirajući luk slika (pojavljuju se dok listaš, ubrzavaju kad brže listaš).
+  5. Tekst čije se riječi razmiču pa skupljaju pri listanju + "About".
+  6. Footer: adresa, Terms & Conditions, "All rights reserved · Agency Redo",
+     About / Services.
+
+Stranica ABOUT (about.html):
+  - veliki naslov čije riječi ulaze odozdo jedna za drugom
+  - video preko cijele širine koji se sužava na ulazu i izlazu (+ zvuk/pauza)
+  - uvodni tekst, "Our guiding principles" (6 stavki, pojavljuju se jedna po jedna)
+  - fiksna navigacija About | Services dolje u sredini, footer
+
+Stranica SERVICES (services.html):
+  - "Advertising & Experience design services" (6 grupa usluga)
+  - "Our clients" – veliki popis klijenata
+  - "Cinema services" (2 grupe)
+  - ista fiksna navigacija, footer
+
+Zajedničko svim stranicama: izbornik s 3D prstenom projekata (Projekt 1–9),
+cookie obavijest, "scramble" animacija slova na linkovima (Contact, About...),
+fade prijelaz između stranica. Na bijelim stranicama logo i MENU automatski
+postanu crni, a preko videa i izbornika bijeli.
+
+Stranica PROJECTS (projects.html):
+  - tri kategorije jedna ispod druge: Advertising, Cinema, Experience design
+    (svaka ima naslov, broj projekata i 6 kartica – dodaj ili obriši <article> po želji)
+  - "Discover all the projects" na naslovnici i stavke u izborniku otvaraju stranicu
+    točno na toj kategoriji (npr. projects.html#cinema), a listanjem dolaziš do ostalih
+  - fiksna navigacija kategorija dolje u sredini – sama označi kategoriju koju gledaš
+  - kartica: oštri rubovi, slika (4:3) preko cijele kartice, naziv dolje lijevo.
+    Na hover: slika se lagano poveća, ispod naziva se pojavi kratki opis, a iznad
+    slike se složi hrpa traka s ostalim slikama projekta.
+    Slike za hrpu upiši u data-gallery, npr.:
+      <div class="pc-media" data-gallery="slike/a.webp, slike/b.webp, slike/c.webp">
+    (najviše 5; ako je prazno, trake su obojeni blokovi)
+  - na mobitelu je jedan stupac, a opis se prikazuje odmah ispod naziva

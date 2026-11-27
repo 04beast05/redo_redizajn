@@ -1,0 +1,1032 @@
+/* =========================================================
+   AGENCY REDO – web stranica (HTML + CSS + JS, bez biblioteka)
+   ========================================================= */
+
+/* ---------- Monument Extended (datoteke u mapi fonts/) ---------- */
+@font-face {
+  font-family: "Monument Extended";
+  src: url("fonts/MonumentExtended-Regular.otf") format("opentype");
+  font-weight: 100 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Monument Extended";
+  src: url("fonts/MonumentExtended-Ultrabold.otf") format("opentype");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --base: #dddddd;
+  --contrast: #000000;
+  --white: #ffffff;
+  --gray: #8a8a8a;
+
+  --font-title: "Monument Extended", "Arial Black", sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --fs-xsmall: 10px;
+  --fs-small: clamp(14px, 0.875rem + ((1vw - 7.68px) * 0.174), 16px);
+  --fs-medium: clamp(18px, 1.125rem + ((1vw - 7.68px) * 0.521), 24px);
+  --fs-xmedium: clamp(24px, 1.5rem + ((1vw - 7.68px) * 0.521), 30px);
+  --fs-large: clamp(24px, 1.5rem + ((1vw - 7.68px) * 1.389), 40px);
+  --fs-xlarge: clamp(40px, 2.5rem + ((1vw - 7.68px) * 4.167), 88px);
+
+  --pad-left: 6.25%;
+  --pad-right: 8.3333%;
+  --ease: cubic-bezier(.785, .135, .15, .86);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--contrast);
+  color: var(--base);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body.is-locked { overflow: hidden; height: 100vh; }
+
+a { color: inherit; }
+
+img, video { display: block; max-width: 100%; }
+
+.screen-reader-text {
+  position: absolute; left: -9999px; top: 0;
+}
+.screen-reader-text:focus {
+  left: 10px; top: 10px; z-index: 9999; background: #fff; color: #000; padding: 8px 12px;
+}
+
+/* ---------- PLACEHOLDER BLOK (umjesto slika) ----------
+   U svaki .ph možeš staviti <img src="..."> ili <video ...>
+   i on će automatski prekriti blok.                         */
+.ph {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, var(--c1, #2a2a2a), var(--c2, #111));
+}
+.ph::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  pointer-events: none;
+}
+.ph > img,
+.ph > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.ph:has(> img, > video)::after { display: none; }
+
+/* ======================== HEADER ======================== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 40px var(--pad-right) 0 var(--pad-left);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.site-header.is-visible { opacity: 1; }
+.site-header > * { pointer-events: auto; }
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.logo img {
+  display: block;
+  height: 56px;
+  width: auto;
+  max-width: none;
+  transition: opacity .3s ease;
+}
+.logo:hover img { opacity: .75; }
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: var(--base);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 0;
+  height: 40px;
+}
+.menu-label { position: relative; display: block; white-space: nowrap; }
+.menu-label .text-close {
+  position: absolute; right: 0; top: 0;
+  visibility: hidden;
+}
+.menu-icon { width: 26px; height: 10px; position: relative; overflow: visible; }
+.menu-icon i {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: currentColor;
+  transition: transform .5s var(--ease), top .5s var(--ease);
+}
+.menu-icon i:nth-child(1) { top: 2px; }
+.menu-icon i:nth-child(2) { top: 8px; }
+
+body.menu-open .menu-label .text-menu { visibility: hidden; }
+body.menu-open .menu-label .text-close { visibility: visible; }
+body.menu-open .menu-icon i:nth-child(1) { top: 5px; transform: rotate(35deg); }
+body.menu-open .menu-icon i:nth-child(2) { top: 5px; transform: rotate(-35deg); }
+
+@media (max-width: 768px) {
+  .site-header { padding-top: 20px; }
+  .logo img { height: 40px; }
+}
+
+/* ======================== LOADER ======================== */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.1s var(--ease);
+}
+.loader.is-done { transform: translateY(-100%); }
+.loader.is-gone { display: none; }
+
+.loader-count {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1;
+  letter-spacing: -.01em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  transition: opacity .6s ease, transform 1s var(--ease);
+}
+.loader-count small {
+  font-size: .45em;
+  vertical-align: top;
+  margin-left: .12em;
+  font-weight: 400;
+}
+.loader.is-done .loader-count { opacity: 0; transform: translateY(-40px); }
+
+/* ---------- Controls (pauza / zvuk) ---------- */
+.controls {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 10;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
+  margin-bottom: -10px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--base);
+}
+.controls button {
+  background: none; border: none; padding: 0; color: inherit; cursor: pointer; display: flex;
+}
+.controls svg { width: 14px; height: 14px; fill: currentColor; }
+.toggle-play-pause .play { display: none; }
+.toggle-play-pause.paused .pause { display: none; }
+.toggle-play-pause.paused .play { display: block; }
+.toggle-sound .vol-up { display: none; }
+.toggle-sound.unmuted .vol-up { display: block; }
+.toggle-sound.unmuted .vol-mute { display: none; }
+@media (max-width: 768px) {
+  .controls { bottom: 16px; right: 16px; }
+}
+
+/* ======================== CTA (tekst + ovalna strelica) ======================== */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--base);
+  font-size: var(--fs-small);
+  cursor: pointer;
+}
+.cta .arrow {
+  width: 32px;
+  height: 16px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.cta .arrow svg {
+  width: 14px; height: 8px;
+  transition: transform .5s var(--ease);
+}
+.cta .arrow svg + svg {
+  position: absolute;
+  transform: translateX(-28px);
+}
+.cta:hover .arrow svg:first-child { transform: translateX(28px); }
+.cta:hover .arrow svg + svg { transform: translateX(0); }
+
+/* ======================== HERO ======================== */
+.hero {
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2%;
+  position: relative;
+}
+.title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  line-height: 1;
+  color: #f2f2f2;
+  margin: 0;
+}
+.hero .title {
+  font-size: var(--fs-xlarge);
+  text-align: center;
+  max-width: 1500px;
+}
+.hero .title .hl { display: block; overflow: hidden; }
+.hero .title .hl > span { display: block; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .hero .title { line-height: 1; font-size: 34px; }
+}
+
+/* ======================== IMAGE WHEEL (rotirajući luk slika) ======================== */
+.wheel-section {
+  position: relative;
+  height: 160vh;
+  margin-top: -30vh;
+}
+.wheel-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+.wheel {
+  position: absolute;
+  inset: 0;
+}
+.wheel figure {
+  position: absolute;
+  margin: 0;
+  will-change: transform;
+}
+.wheel figure .ph {
+  position: absolute; /* širina/visina se računaju u script.js prema dimenzijama slike */
+  will-change: transform;
+}
+.wheel figure .ph::after { font-size: 10px; }
+
+/* ======================== SPLIT TEXT ======================== */
+.statement {
+  padding: 18vh 4% 0;
+  text-align: center;
+}
+.split {
+  font-size: var(--fs-large);
+  text-align: center;
+}
+.split .flex-line {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0 .32em;
+  white-space: nowrap;
+}
+.split .word {
+  display: inline-block;
+  will-change: transform;
+}
+.statement .cta { margin-top: 64px; }
+
+@media (max-width: 768px) {
+  .split { font-size: 19px; }
+  .split .flex-line { flex-wrap: wrap; white-space: normal; }
+}
+
+/* ======================== CATEGORIES (Advertising / Cinema / XP) ======================== */
+.categories {
+  position: relative;
+  margin-top: 20vh;
+  height: 420vh;
+}
+/* kad su kategorije prve na stranici, video kreće odmah od vrha (ispod navbara) */
+#main > .categories:first-child { margin-top: 0; }
+.categories + .wheel-section { margin-top: 0; }
+
+.cat-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+.cat-layers {
+  position: absolute;
+  inset: 0;
+}
+.cat-layers.is-liquid { filter: url(#liquid); }
+.cat-media {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.cat-media.is-active { opacity: 1; }
+.cat-media.ph::after { font-size: 14px; }
+
+.cat-media:nth-child(1) { --c1: #4a3424; --c2: #120c08; }
+.cat-media:nth-child(2) { --c1: #57655a; --c2: #2b2016; }
+.cat-media:nth-child(3) { --c1: #3a5a7a; --c2: #05070c; }
+.cat-media:nth-child(4) { --c1: #2d2a26; --c2: #0b0a09; }
+
+.cat-media::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.25));
+  pointer-events: none;
+}
+
+.category-captions {
+  position: absolute;
+  left: 8.3333%;
+  right: 8.3333%;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.category-caption {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.category-caption.is-active { pointer-events: all; }
+.category-caption h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: var(--fs-medium);
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+}
+.category-caption .cta { color: #fff; }
+
+@media (max-width: 768px) {
+  .category-caption { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+
+/* ======================== MENU OVERLAY ======================== */
+.core-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  background: var(--contrast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+  transition: opacity .6s var(--ease), visibility 0s linear .6s;
+  overflow: hidden;
+}
+body.menu-open .core-menu {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .6s var(--ease), visibility 0s;
+}
+
+.ring-scene {
+  position: absolute;
+  inset: 0;
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0; height: 0;
+  transform-style: preserve-3d;
+}
+.ring-panel {
+  position: absolute;
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+}
+.ring-panel.ph::after { font-size: 13px; }
+
+.menu-nav {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  perspective: 800px;
+}
+.menu-nav ul { list-style: none; margin: 0; padding: 0; }
+.menu-main li a {
+  font-family: var(--font-title);
+  font-size: var(--fs-medium);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  line-height: 1.45;
+  letter-spacing: -.01em;
+  transition: opacity .3s;
+}
+.menu-main:hover li a { opacity: .45; }
+.menu-main li a:hover { opacity: 1; }
+.menu-secondary {
+  display: flex;
+  justify-content: center;
+  gap: .3em;
+  margin-top: 14px !important;
+  font-size: 12px;
+}
+.menu-secondary li:not(:last-child)::after {
+  content: "—";
+  display: inline-flex;
+  margin-left: .3em;
+  color: #fff;
+}
+.menu-secondary a { text-decoration: none; }
+.menu-secondary a:hover { text-decoration: underline; }
+
+.menu-nav li {
+  opacity: 0;
+  transform: rotateX(-80deg) translateY(20px);
+  transform-origin: 50% 50% -20px;
+  transition: transform .9s var(--ease), opacity .6s ease;
+}
+body.menu-open .menu-nav li { opacity: 1; transform: none; }
+body.menu-open .menu-nav li:nth-child(1) { transition-delay: .15s; }
+body.menu-open .menu-nav li:nth-child(2) { transition-delay: .22s; }
+body.menu-open .menu-nav li:nth-child(3) { transition-delay: .29s; }
+body.menu-open .menu-secondary li { transition-delay: .4s !important; }
+
+
+/* ======================== FOOTER ======================== */
+.site-footer {
+  margin-top: 150px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.footer-bottom {
+  display: grid;
+  grid-template-columns: repeat(48, 1fr);
+  align-items: end;
+  position: relative;
+  z-index: 2;
+}
+.footer-bottom > :nth-child(1) { grid-column: 3 / span 14; }
+.footer-bottom > :nth-child(2) { grid-column: 18 / span 14; text-align: center; }
+.footer-bottom > :nth-child(3) { grid-column: 39 / -3; width: 100%; }
+.footer-bottom p { margin: 0; }
+.footer-address { font-size: var(--fs-small); line-height: 1.2; }
+.footer-terms { font-size: var(--fs-xsmall); margin-top: 8px !important; }
+.footer-terms a { text-decoration: none; }
+.footer-terms a:hover { text-decoration: underline; }
+.footer-credit { color: var(--gray); font-size: var(--fs-small); }
+.footer-credit a { color: inherit; }
+.footer-nav ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; align-items: flex-end;
+}
+.footer-nav a { text-decoration: none; line-height: 1.2; font-size: var(--fs-small); }
+.footer-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .site-footer { padding-bottom: 16px; }
+  .footer-bottom { row-gap: 14px; }
+  .footer-bottom > :nth-child(1) { grid-column: 3 / span 34; }
+  .footer-bottom > :nth-child(2) { grid-column: 3 / span 34; text-align: left; }
+  .footer-bottom > :nth-child(3) { grid-column: 39 / -3; grid-row: 1 / span 2; }
+  .footer-nav ul { gap: 10px; }
+}
+
+/* ======================== COOKIE BANNER ======================== */
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 90;
+  max-width: 588px;
+  padding: 32px 33px 30px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(0,0,0,.08);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border-radius: 4px;
+  transition: opacity .5s, transform .5s var(--ease);
+}
+.cookie-banner.is-hidden { opacity: 0; transform: translateY(20px); pointer-events: none; }
+.cookie-banner p { margin: 0 0 14px; }
+.cookie-banner button {
+  background: none; border: none; color: #fff; padding: 0; margin-right: 6px;
+  font: inherit; text-decoration: underline; cursor: pointer;
+}
+@media (max-width: 768px) {
+  .cookie-banner { left: 8px; right: 8px; bottom: 8px; padding: 20px; font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+
+/* =========================================================
+   PODSTRANICE: ABOUT + SERVICES
+   ========================================================= */
+
+/* prijelaz između stranica */
+body { animation: pageIn .7s ease both; }
+body.is-leaving-page { opacity: 0; transition: opacity .45s ease; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+.inner-page main { padding-top: 120px; }
+@media (max-width: 768px) { .inner-page main { padding-top: 96px; } }
+
+.page-section { padding: 0 8.3333%; }
+
+.section-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: var(--fs-medium);
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #f2f2f2;
+  margin: 0 0 120px;
+  line-height: 1;
+}
+@media (max-width: 1024px) { .section-title { margin-bottom: 80px; } }
+@media (max-width: 768px) { .section-title { margin-bottom: 56px; } }
+
+/* ---------- lista usluga / principa (3 stupca po max 360px) ---------- */
+.list {
+  container-type: inline-size;
+  display: flex;
+  justify-content: center;
+}
+.list-container {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  column-gap: 27px;
+  row-gap: 40px;
+  justify-content: center;
+  width: 100%;
+}
+@container (width > 900px) {
+  .list-container { grid-template-columns: repeat(3, minmax(0, 300px)); }
+  .list-container.cols-2 { grid-template-columns: repeat(2, minmax(0, 300px)); }
+}
+@media (max-width: 768px) {
+  .list-container, .list-container.cols-2 { grid-template-columns: 1fr; row-gap: 48px; }
+}
+.list-item { width: 100%; }
+.list-item h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: var(--fs-medium);
+  letter-spacing: -.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  margin: 0 0 22px;
+}
+.list-item .text {
+  font-size: var(--fs-small);
+  line-height: 1.2;
+  color: var(--base);
+}
+.list-item .text p { margin: 0; }
+
+/* postupno pojavljivanje (stagger) */
+[data-stagger] > * {
+  opacity: .12;
+  transition: opacity .9s ease;
+}
+[data-stagger] > *.is-in { opacity: 1; }
+
+/* ---------- fiksna navigacija About | Services ---------- */
+.tab-nav {
+  background-color: #ffffff14;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+  position: fixed;
+  bottom: 48px;
+  left: 50%;
+  transform: translate(-50%);
+  width: auto;
+  white-space: nowrap;
+  z-index: 30;
+  display: flex;
+}
+@media (max-width: 1440px) { .tab-nav { bottom: 32px; } }
+@media (max-width: 1024px) { .tab-nav { bottom: 24px; } }
+@media (max-width: 768px) {
+  .tab-nav { bottom: 16px; transition: bottom .4s var(--ease); }
+  body.cookie-open .tab-nav { bottom: calc(var(--cookie-h, 110px) + 16px); }
+}
+.tab-nav .tab-link {
+  color: #eee9;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 13.3333px;
+  display: inline-flex;
+  transition: color .3s var(--ease);
+}
+.tab-nav .tab-link.active,
+.tab-nav .tab-link:hover { color: #ddd; }
+.tab-nav .tab-link.active { font-weight: 700; }
+body.menu-open .tab-nav { opacity: 0; pointer-events: none; }
+
+/* ---------- SERVICES ---------- */
+.services-block { margin-bottom: 180px; }
+@media (max-width: 768px) { .services-block { margin-bottom: 120px; } }
+
+.clients { text-align: center; margin-bottom: 180px; }
+.clients .section-title { color: #cfcfcf; }
+.clients-grid { display: flex; flex-direction: column; align-items: center; }
+.client { position: relative; }
+.client h2 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: var(--fs-xlarge);
+  line-height: .85;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+@media (max-width: 768px) { .client h2 { font-size: 30px; line-height: .95; } }
+
+/* ---------- ABOUT ---------- */
+.about-hero {
+  font-size: var(--fs-large);
+  text-align: center;
+  padding: 0 4%;
+  margin-bottom: 180px;
+}
+.about-hero .flex-line {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 .3em;
+}
+.about-hero .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60%);
+  transition: transform 1s var(--ease), opacity .8s ease;
+}
+.about-hero.is-in .word { opacity: 1; transform: none; }
+@media (max-width: 768px) {
+  .about-hero { font-size: 19px; line-height: 1 !important; margin-bottom: 100px; }
+}
+
+.about-media {
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  height: 100svh;
+  will-change: clip-path;
+  --c1: #3b4c66; --c2: #0c1018;
+}
+.about-media .controls { position: absolute; }
+
+.about-text {
+  font-size: var(--fs-medium);
+  font-weight: 300;
+  line-height: 1.3;
+  text-align: center;
+  max-width: 1100px;
+  margin: 200px auto 200px;
+  padding: 0 6%;
+}
+@media (max-width: 768px) {
+  .about-text { font-size: 17px; margin: 120px auto; }
+  .about-text br { display: none; }
+}
+
+.team-grid {
+  --team-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 64px var(--team-gap);
+  padding: 0 8.3333%;
+  margin-bottom: 200px;
+}
+@media (max-width: 1440px) { .team-grid { --team-gap: 20px; } }
+@media (max-width: 1024px) { .team-grid { --team-gap: 8px; grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; padding: 0 5%; } }
+
+.person {
+  text-align: center;
+  padding-bottom: 6px;
+  transition: background-color .4s ease;
+}
+.person figure {
+  margin: 0 0 18px;
+  aspect-ratio: 1 / .95;
+  --c1: #262626; --c2: #050505;
+}
+.person figure.ph::after { font-size: 10px; }
+.person:hover { background: #0a0a0a; }
+.person .first,
+.person .last {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: var(--fs-medium);
+  line-height: 1;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.person .role {
+  display: block;
+  font-size: var(--fs-xsmall);
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 6px;
+  letter-spacing: .02em;
+}
+.person .social {
+  display: inline-flex;
+  margin-top: 16px;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -.02em;
+}
+.person .social.imdb { font-size: 12px; letter-spacing: -.04em; }
+
+.principles { margin-bottom: 180px; }
+
+/* =========================================================
+   BIJELE PODSTRANICE (About + Services) – crni tekst
+   ========================================================= */
+body.inner-page {
+  --base: #111111;
+  --gray: #6f6f6f;
+  background: #ffffff;
+  color: #111111;
+}
+.inner-page .title,
+.inner-page .section-title,
+.inner-page .list-item h3,
+.inner-page .client h2,
+.inner-page .person .first,
+.inner-page .person .last,
+.inner-page .person .social { color: #000; }
+.inner-page .clients .section-title { color: #333; }
+.inner-page .person:hover { background: #f3f3f3; }
+.inner-page .person figure { --c1: #d9d9d9; --c2: #bdbdbd; }
+.inner-page .person figure.ph::after { color: rgba(0,0,0,.45); }
+
+/* logo i MENU: boja se sama prilagodi pozadini
+   (crno na bijeloj stranici, bijelo preko videa i izbornika) */
+.inner-page .site-header { mix-blend-mode: difference; }
+/* potrebno da bi "difference" radio i na samoj bijeloj pozadini */
+html:has(body.inner-page) { background: #fff; }
+.inner-page .menu-toggle { color: #fff; }
+
+.core-menu { color: #ddd; }
+
+/* donja navigacija About | Services */
+.inner-page .tab-nav { background-color: rgba(0,0,0,.06); }
+.inner-page .tab-nav .tab-link { color: rgba(0,0,0,.55); }
+.inner-page .tab-nav .tab-link.active,
+.inner-page .tab-nav .tab-link:hover { color: #000; }
+
+/* cookie obavijest */
+.inner-page .cookie-banner { color: #111; background: rgba(255,255,255,.6); box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+.inner-page .cookie-banner button { color: #111; }
+
+/* =========================================================
+   PROJECTS (projects.html) – crna stranica, oštre kartice
+   ========================================================= */
+html:has(body.projects-page) { scroll-behavior: smooth; }
+.projects-page main { padding-top: 140px; }
+@media (max-width: 768px) { .projects-page main { padding-top: 100px; } }
+
+.projects-title { margin-bottom: 110px; }
+@media (max-width: 768px) { .projects-title { margin-bottom: 60px; } }
+
+.project-category {
+  padding: 0 var(--pad-right) 0 var(--pad-left);
+  margin-bottom: 180px;
+  scroll-margin-top: 120px;
+}
+@media (max-width: 768px) {
+  .project-category { padding: 0 16px; margin-bottom: 110px; scroll-margin-top: 84px; }
+}
+
+.pcat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.22);
+}
+.pcat-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: var(--fs-large);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  margin: 0;
+  color: #fff;
+}
+.pcat-count {
+  font-family: var(--font-title);
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--gray);
+}
+
+/* mreža: 3 stupca / 2 na tabletu / 1 na mobitelu */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 1024px) { .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { .project-grid { grid-template-columns: 1fr; gap: 10px; } }
+
+/* ---------- kartica: slika preko cijele kartice, tekst dolje lijevo ---------- */
+.project-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  background: #0b0b0b;
+}
+.project-card:focus-visible { box-shadow: 0 0 0 1px #fff; }
+
+.pc-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #111;
+}
+
+/* hrpa traka (ostale slike projekta) – otkriva se na hover */
+.pc-stack { position: absolute; inset: 0; }
+.pc-strip {
+  position: absolute;
+  left: 0; right: 0;
+  height: 44px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--c1, #555), var(--c2, #222));
+  border-top: 1px solid rgba(255,255,255,.18);
+  transform: translateY(-110%);
+  transition: transform .6s var(--ease);
+}
+.pc-strip img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.85); }
+
+.pc-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  transition: transform .6s var(--ease);
+  --c1: #2b2b2b; --c2: #0e0e0e;
+}
+.pc-cover.ph::after { font-size: 11px; color: rgba(255,255,255,.3); }
+.pc-cover > img, .pc-cover > video { transition: transform 1.2s var(--ease); }
+
+/* tamni prijelaz ispod teksta */
+.pc-media::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 55%;
+  z-index: 25;
+  background: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+.pc-info {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 30;
+  padding: 22px 24px;
+  pointer-events: none;
+}
+.pc-title { margin: 0; font-weight: 400; }
+.pc-name {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.15;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: transform .5s var(--ease);
+}
+.pc-tagline {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.25;
+  color: rgba(255,255,255,.75);
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  overflow: hidden;
+  transition: max-height .5s var(--ease), opacity .4s ease, transform .5s var(--ease), margin .5s var(--ease);
+}
+
+.project-card:hover .pc-strip,
+.project-card:focus-visible .pc-strip { transform: translateY(0); }
+.project-card:hover .pc-cover,
+.project-card:focus-visible .pc-cover { transform: translateY(var(--stack-h, 40px)); }
+.project-card:hover .pc-cover > img,
+.project-card:hover .pc-cover > video { transform: scale(1.05); }
+.project-card:hover .pc-tagline,
+.project-card:focus-visible .pc-tagline { max-height: 3em; opacity: 1; transform: none; margin-top: 8px; }
+
+@media (max-width: 768px) {
+  .pc-info { padding: 16px 18px; }
+}
+/* mobitel / dodir: opis je uvijek vidljiv */
+@media (hover: none) {
+  .pc-tagline { max-height: 3em; opacity: 1; transform: none; margin-top: 6px; }
+}
+
+/* navigacija kategorija na mobitelu – manji razmaci da stane */
+@media (max-width: 768px) {
+  .project-tabs .tab-link { padding: 16px 12px; font-size: 12px; }
+}

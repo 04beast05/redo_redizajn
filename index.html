@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Agency Redo</title>
+  <meta name="description" content="Agency Redo – multimedia agency from Osijek, Croatia.">
+
+  <!-- Naslovi: Monument Extended (mapa fonts/). Tekst: Source Sans 3 (Google Fonts). -->
+  <link rel="preload" href="fonts/MonumentExtended-Ultrabold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-locked">
+
+<!--
+  KAKO ZAMIJENITI BLOK SLIKOM:
+  Svaki blok ima class="ph". Unutra samo dodaj sliku ili video, npr.:
+    <div class="ph" data-label="Slika 01"><img src="slike/slika01.jpg" alt=""></div>
+    <div class="ph" data-label="Video"><video src="video/klip.mp4" muted loop autoplay playsinline></video></div>
+  Slika automatski popuni cijeli blok (object-fit: cover), a natpis nestane.
+-->
+
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+<!-- SVG filter za "tekući" (liquid) prijelaz između kategorija -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="liquid" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence id="liquid-turb" type="fractalNoise" baseFrequency="0.004 0.012" numOctaves="2" seed="3" result="noise"/>
+    <feDisplacementMap id="liquid-disp" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<!-- ======================= LOADER =======================
+     Prikazuje se dok se ne učitaju slike i videi na stranici. -->
+<div class="loader" id="loader" role="status" aria-label="Učitavanje">
+  <div class="loader-count"><span id="loader-num">0</span><small>%</small></div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header" id="header">
+  <a class="logo" href="index.html" aria-label="Agency Redo – početna">
+    <img src="slike/redo_multimediaagency1.png" alt="Agency Redo">
+  </a>
+
+  <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="core-menu">
+    <span class="menu-label">
+      <span class="text-close">CLOSE</span>
+      <span class="text-menu">MENU</span>
+    </span>
+    <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+  </button>
+</header>
+
+<!-- ======================= MAIN ======================= -->
+<main id="main">
+
+   <!-- Kategorije -->
+   <section class="categories" id="categories">
+    <div class="cat-stage">
+      <div class="cat-layers" id="cat-layers">
+        <div class="cat-media ph is-active" data-label="Uvodni video (loop)"><!-- <video src="video/uvod.mp4" muted loop autoplay playsinline></video> --></div>
+        <div class="cat-media ph" data-label="Advertising video (loop)"><!-- <video src="video/advertising.mp4" muted loop autoplay playsinline></video> --></div>
+        <div class="cat-media ph" data-label="Cinema video (loop)"><!-- <video src="video/cinema.mp4" muted loop autoplay playsinline></video> --></div>
+        <div class="cat-media ph" data-label="Experience design video (loop)"><!-- <video src="video/experience.mp4" muted loop autoplay playsinline></video> --></div>
+      </div>
+
+      <div class="category-captions" id="cat-captions">
+        <div class="category-caption" data-index="1">
+          <h3>Advertising</h3>
+          <a class="cta" href="projects.html#advertising">
+            <span class="label">Discover all the projects</span>
+            <span class="arrow"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg></span>
+          </a>
+        </div>
+        <div class="category-caption" data-index="2">
+          <h3>Cinema</h3>
+          <a class="cta" href="projects.html#cinema">
+            <span class="label">Discover all the projects</span>
+            <span class="arrow"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg></span>
+          </a>
+        </div>
+        <div class="category-caption" data-index="3">
+          <h3>Experience design</h3>
+          <a class="cta" href="projects.html#experience-design">
+            <span class="label">Discover all the projects</span>
+            <span class="arrow"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="toggle-sound" id="cat-sound" type="button" aria-label="Sound">
+          <svg class="vol-mute" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+          <svg class="vol-up" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5c1.2 1.3 1.2 3.7 0 5M13 4c2 2.2 2 5.8 0 8" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+        </button>
+        <button class="toggle-play-pause" id="cat-pause" type="button" aria-label="Pause">
+          <svg class="pause" viewBox="0 0 16 16"><rect x="4" y="2" width="2.2" height="12"/><rect x="9.8" y="2" width="2.2" height="12"/></svg>
+          <svg class="play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO naslov 
+  <section class="hero" id="hero">
+    <h1 class="title" id="hero-title">
+      <span class="hl"><span>We are a creative house</span></span>
+      <span class="hl"><span>shaping advertising, cinema</span></span>
+      <span class="hl"><span>and experience design, that</span></span>
+      <span class="hl"><span>move people.</span></span>
+    </h1>
+  </section>-->
+
+  <!-- Rotirajući luk slika (svaka slika zadržava svoje dimenzije) -->
+  <section class="wheel-section" id="wheel-section">
+    <div class="wheel-sticky">
+      <div class="wheel" id="wheel">
+        <figure><div class="ph" data-label="Slika 01"><img src="slike/_DSC0225.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 02"><img src="slike/_DSC0333.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 03"><img src="slike/_DSC0520.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 04"><img src="slike/_DSC0526.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 05"><img src="slike/_DSC1838.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 06"><img src="slike/_DSC1926.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 07"><img src="slike/_DSC1956.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 08"><img src="slike/_DSC2058.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 09"><img src="slike/_DSC2124.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 10"><img src="slike/_DSC2138.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 11"><img src="slike/_DSC2145.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 12"><img src="slike/_DSC2156.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 13"><img src="slike/_DSC2205.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 14"><img src="slike/_DSC2281.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 15"><img src="slike/_DSC2823-2.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 16"><img src="slike/_DSC2894-2.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 17"><img src="slike/_DSC3228.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 18"><img src="slike/_DSC3261.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 19"><img src="slike/_DSC3300.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 20"><img src="slike/_DSC3327.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 21"><img src="slike/_DSC3374.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 22"><img src="slike/_DSC3477.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 23"><img src="slike/_DSC3482.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 24"><img src="slike/_DSC3597.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 25"><img src="slike/_DSC3637.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 26"><img src="slike/_DSC3682.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 27"><img src="slike/_DSC3729.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 28"><img src="slike/_DSC3797.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 29"><img src="slike/_DSC3867.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 30"><img src="slike/_DSC3899.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 31"><img src="slike/_DSC3929.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 32"><img src="slike/_DSC4273.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 33"><img src="slike/_DSC4287.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 34"><img src="slike/_DSC4313.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 35"><img src="slike/_DSC4324.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 36"><img src="slike/_DSC4337.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 37"><img src="slike/_DSC4351.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 38"><img src="slike/_DSC4359.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 39"><img src="slike/_DSC4416.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 40"><img src="slike/_DSC4724.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 41"><img src="slike/_DSC4766.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 42"><img src="slike/_DSC4856.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 43"><img src="slike/_DSC5023.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 44"><img src="slike/_DSC5074.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 45"><img src="slike/_DSC6751.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 46"><img src="slike/_DSC6903.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 47"><img src="slike/_DSC7827.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 48"><img src="slike/_DSC7896.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 49"><img src="slike/_DSC8291.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 50"><img src="slike/_DSC8354 (2).webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 51"><img src="slike/_DSC9142.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 52"><img src="slike/_DSC9278.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 53"><img src="slike/_DSC9313.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 54"><img src="slike/_DSC9518.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 55"><img src="slike/0-1.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 56"><img src="slike/0-1-5.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 57"><img src="slike/0-1-7.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 58"><img src="slike/0-1-10.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 59"><img src="slike/0-1-16.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 60"><img src="slike/0-1-32.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 61"><img src="slike/0-1-38.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 62"><img src="slike/0-1-47.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 63"><img src="slike/0-1-48.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 64"><img src="slike/0-1-69.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 65"><img src="slike/0-1-116.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 66"><img src="slike/f2.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 67"><img src="slike/f6.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 68"><img src="slike/untitled (1 of 1)-5.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 69"><img src="slike/untitled (1 of 1)-13.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 70"><img src="slike/untitled (1 of 1)-28.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 71"><img src="slike/untitled (1 of 1)-82.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 72"><img src="slike/untitled (1 of 1)-86.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 73"><img src="slike/w4.webp" alt=""></div></figure>
+<figure><div class="ph" data-label="Slika 74"><img src="slike/w8.webp" alt=""></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Izjava / misija -->
+  <section class="statement">
+    <h2 class="title split" data-split>
+      <span class="flex-line">Bringing together</span>
+      <span class="flex-line">the best talents from each industry,</span>
+      <span class="flex-line">we believe creativity is more</span>
+      <span class="flex-line">than expression. It’s a force</span>
+      <span class="flex-line">that has meaningful resonance.</span>
+    </h2>
+    <a class="cta" href="about.html">
+      <span class="label">About</span>
+      <span class="arrow"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg></span>
+    </a>
+  </section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div>
+      <p class="footer-address">31 000 Osijek<br>Hrvatska</p>
+      <p class="footer-terms"><a href="#terms">TERMS &amp; CONDITIONS</a></p>
+    </div>
+    <p class="footer-credit">All rights reserved · <a href="index.html">Agency Redo</a></p>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<!-- ======================= MENU OVERLAY ======================= -->
+<div class="core-menu" id="core-menu" aria-hidden="true">
+  <!-- 3D prsten s projektima (9 blokova) -->
+  <div class="ring-scene">
+    <div class="ring" id="ring">
+      <div class="ring-panel ph" data-label="Projekt 1"><img src="slike/_DSC3682.webp" alt=""></div>
+      <div class="ring-panel ph" data-label="Projekt 2"><img src="slike/_DSC4766.webp" alt=""></div>
+      <div class="ring-panel ph" data-label="Projekt 3"><img src="slike/_DSC4273.webp" alt=""></div>
+      <div class="ring-panel ph" data-label="Projekt 4"><img src="slike/_DSC4359.webp" alt=""></div>
+      <div class="ring-panel ph" data-label="Projekt 5"><img src="slike/_DSC6751.webp" alt=""></div>
+      <div class="ring-panel ph" data-label="Projekt 6"><img src="slike/0-1-62.webp" alt=""></div>
+      <div class="ring-panel ph" data-label="Projekt 7"><!-- <img src="slike/projekt7.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 8"><!-- <img src="slike/projekt8.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 9"><!-- <img src="slike/projekt9.jpg" alt=""> --></div>
+    </div>
+  </div>
+
+  <nav class="menu-nav" aria-label="Main">
+    <ul class="menu-main">
+      <li><a href="projects.html#advertising">ADVERTISING</a></li>
+      <li><a href="projects.html#cinema">CINEMA</a></li>
+      <li><a href="projects.html#experience-design">EXPERIENCE DESIGN</a></li>
+    </ul>
+    <ul class="menu-secondary">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="mailto:os.agency.redo@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+<!-- ======================= COOKIE BANNER ======================= -->
+<div class="cookie-banner is-hidden" id="cookie-banner" role="dialog" aria-label="Cookies">
+  <p>This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
+  <button type="button" data-cookie="decline">Decline</button>
+  <button type="button" data-cookie="accept">Accept</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

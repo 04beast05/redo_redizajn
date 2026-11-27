@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About - Agency Redo</title>
+  <meta name="description" content="Agency Redo – multimedia agency from Osijek, Croatia.">
+
+  <!-- Naslovi: Monument Extended (mapa fonts/). Tekst: Source Sans 3 (Google Fonts). -->
+  <link rel="preload" href="fonts/MonumentExtended-Ultrabold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner-page">
+
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header is-visible" id="header">
+  <a class="logo" href="index.html" aria-label="Agency Redo – početna">
+    <img src="slike/redo_multimediaagency1.png" alt="Agency Redo">
+  </a>
+
+  <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="core-menu">
+    <span class="menu-label">
+      <span class="text-menu">MENU</span>
+      <span class="text-close">CLOSE</span>
+    </span>
+    <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+  </button>
+</header>
+
+<!-- ======================= MAIN ======================= -->
+<main id="main">
+
+  <h1 class="title about-hero">
+    <span class="flex-line">Based in Osijek, Croatia,</span>
+    <span class="flex-line">Agency Redo is a team of people from</span>
+    <span class="flex-line">marketing, production, software and PR</span>
+    <span class="flex-line">combining all in one agency</span>
+    <span class="flex-line">delivering results to over 20+ clients a month.</span>
+    <br>
+    <span class="flex-line">Let's create something big, together!</span>
+  </h1>
+
+  <!-- Video tima preko cijele širine (sužava se na ulazu/izlazu) -->
+  <figure class="about-media ph" data-label="Video tima (loop)">
+    <!-- <video src="video/tim.mp4" muted loop autoplay playsinline></video> -->
+    <div class="controls">
+      <button class="toggle-sound" type="button" aria-label="Sound">
+        <svg class="vol-mute" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 6l4 4M15 6l-4 4" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+        <svg class="vol-up" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5c1.2 1.3 1.2 3.7 0 5M13 4c2 2.2 2 5.8 0 8" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+      </button>
+      <button class="toggle-play-pause" type="button" aria-label="Pause">
+        <svg class="pause" viewBox="0 0 16 16"><rect x="4" y="2" width="2.2" height="12"/><rect x="9.8" y="2" width="2.2" height="12"/></svg>
+        <svg class="play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+      </button>
+    </div>
+  </figure>
+
+  <p class="about-text">Powered by an in-house collective of 5 talents, a trusted regional network of creatives,<br>
+  and a deep sense of co-creation, we deliver strategic clarity, cultural relevance,<br>
+  and craft excellence to those willing to make a difference.</p>
+
+  
+
+  <section class="page-section principles">
+    <h2 class="section-title">Our guiding principles</h2>
+    <div class="list">
+    <ul class="list-container" data-stagger>
+      <li class="list-item">
+        <h3>Authentic<br>commitment</h3>
+        <div class="text"><p>We take on projects we believe in. Passion, purpose, and impact guide everything we do.</p></div>
+      </li>
+      <li class="list-item">
+        <h3>Reliability &amp;<br>transparency</h3>
+        <div class="text"><p>We define objectives, scope, budget, and timing upfront. From the first presentation you see the full picture, creative and production together, ensuring serenity and trust throughout the whole process.</p></div>
+      </li>
+      <li class="list-item">
+        <h3>Flexibility<br>&amp; agility</h3>
+        <div class="text"><p>We plug in exactly where you need us, from full campaigns support (strategy to final delivery), to standalone creative, production or post-production.</p></div>
+      </li>
+      <li class="list-item">
+        <h3>Tailor-made<br>teams</h3>
+        <div class="text"><p>We curate the right talents for their fit with your project’s DNA ensuring relevance and outstanding craft.</p></div>
+      </li>
+      <li class="list-item">
+        <h3>Co-creation<br>at every step</h3>
+        <div class="text"><p>We shape every project together, from briefing to delivery. You collaborate directly with our experts at our studio, fostering collaboration, agility, and efficiency.</p></div>
+      </li>
+      <li class="list-item">
+        <h3>Proximity</h3>
+        <div class="text"><p>We are in the heart of Osijek so we can truly understand your world and your needs, delivering relevant work powered by our expertise, blending local insight with global experience.</p></div>
+      </li>
+    </ul>
+    </div>
+  </section>
+
+  <!-- Fiksna navigacija dolje u sredini -->
+  <nav class="tab-nav" aria-label="About / Services">
+    <a class="tab-link active" href="about.html" aria-current="page">About</a>
+    <a class="tab-link " href="services.html">Services</a>
+  </nav>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div>
+      <p class="footer-address">31 000 Osijek<br>Hrvatska</p>
+      <p class="footer-terms"><a href="#terms">TERMS &amp; CONDITIONS</a></p>
+    </div>
+    <p class="footer-credit">All rights reserved · <a href="index.html">Agency Redo</a></p>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<!-- ======================= MENU OVERLAY ======================= -->
+<div class="core-menu" id="core-menu" aria-hidden="true">
+  <!-- 3D prsten s projektima (9 blokova) -->
+  <div class="ring-scene">
+    <div class="ring" id="ring">
+      <div class="ring-panel ph" data-label="Projekt 1"><!-- <img src="slike/projekt1.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 2"><!-- <img src="slike/projekt2.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 3"><!-- <img src="slike/projekt3.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 4"><!-- <img src="slike/projekt4.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 5"><!-- <img src="slike/projekt5.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 6"><!-- <img src="slike/projekt6.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 7"><!-- <img src="slike/projekt7.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 8"><!-- <img src="slike/projekt8.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 9"><!-- <img src="slike/projekt9.jpg" alt=""> --></div>
+    </div>
+  </div>
+
+  <nav class="menu-nav" aria-label="Main">
+    <ul class="menu-main">
+      <li><a href="projects.html#advertising">ADVERTISING</a></li>
+      <li><a href="projects.html#cinema">CINEMA</a></li>
+      <li><a href="projects.html#experience-design">EXPERIENCE DESIGN</a></li>
+    </ul>
+    <ul class="menu-secondary">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="mailto:os.agency.redo@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+<!-- ======================= COOKIE BANNER ======================= -->
+<div class="cookie-banner is-hidden" id="cookie-banner" role="dialog" aria-label="Cookies">
+  <p>This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
+  <button type="button" data-cookie="decline">Decline</button>
+  <button type="button" data-cookie="accept">Accept</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
