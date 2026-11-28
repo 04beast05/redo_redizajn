@@ -6,11 +6,11 @@
    a kontakt forma otvara mail program.
    ========================================================= */
 window.REDO_CONFIG = {
-  // npr. "https://abcdefghijk.supabase.co"
+  // npr. "https://ptluyvxorqsvbrmchnwa.supabase.co"
   supabaseUrl: "",
 
   // "anon public" ili "publishable" ključ (NIKAKO service_role!)
-  supabaseKey: "",
+  supabaseKey: "sb_publishable_izQM6OOlKYnA2y2mQM8aKg_1lB1Amms",
 
   // naziv Storage bucketa za slike i videe
   storageBucket: "media",
