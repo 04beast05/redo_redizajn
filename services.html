@@ -7,14 +7,13 @@
   <meta name="description" content="Agency Redo – multimedia agency from Osijek, Croatia.">
 
   <!-- Naslovi: Monument Extended (mapa fonts/). Tekst: Source Sans 3 (Google Fonts). -->
-  <link rel="preload" href="fonts/MonumentExtended-Ultrabold.otf" as="font" type="font/otf" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="inner-page">
+<body class="inner-page" data-page="services">
 
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
 
@@ -168,27 +167,44 @@
   </section>
 
   <!-- Fiksna navigacija dolje u sredini -->
-  <nav class="tab-nav" aria-label="About / Services">
-    <a class="tab-link " href="about.html">About</a>
+  <nav class="tab-nav" aria-label="About / Services / Contact">
+    <a class="tab-link" href="about.html">About</a>
     <a class="tab-link active" href="services.html" aria-current="page">Services</a>
+    <a class="tab-link" href="contact.html">Contact</a>
   </nav>
 
 </main>
 
-<!-- ======================= FOOTER ======================= -->
+<!-- ======================= FOOTER =======================
+     Broj mobitela i Instagram link promijeni ovdje (na svakoj stranici je isti footer). -->
 <footer class="site-footer">
-  <div class="footer-bottom">
-    <div>
-      <p class="footer-address">31 000 Osijek<br>Hrvatska</p>
-      <p class="footer-terms"><a href="#terms">TERMS &amp; CONDITIONS</a></p>
+  <div class="footer-grid">
+    <div class="f-col">
+      <span class="f-label">Contact</span>
+      <a class="f-link" data-cms="phone" href="tel:+385000000000">+385 00 000 0000</a>
+      <a class="f-link" data-cms="email" href="mailto:os.agency.redo@gmail.com">os.agency.redo@gmail.com</a>
     </div>
-    <p class="footer-credit">All rights reserved · <a href="index.html">Agency Redo</a></p>
-    <nav class="footer-nav" aria-label="Footer">
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-      </ul>
+    <div class="f-col">
+      <span class="f-label">Address</span>
+      <p data-cms="address">31 000 Osijek<br>Hrvatska</p>
+    </div>
+    <nav class="f-col" aria-label="Footer">
+      <span class="f-label">Pages</span>
+      <a class="f-link" href="about.html">About</a>
+      <a class="f-link" href="services.html">Services</a>
+      <a class="f-link" href="contact.html">Contact</a>
     </nav>
+    <div class="f-col">
+      <span class="f-label">Follow</span>
+      <div class="f-icons">
+        <a class="f-icon" data-cms="instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg></a>
+        <a class="f-icon" data-cms="email-link" href="mailto:os.agency.redo@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-row">
+    <p>© <span data-year>2026</span> <span data-cms="copyright">Agency Redo. All rights reserved.</span></p>
+    <a href="#terms">Terms &amp; Conditions</a>
   </div>
 </footer>
 
@@ -218,7 +234,7 @@
     <ul class="menu-secondary">
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="mailto:os.agency.redo@gmail.com">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
@@ -226,11 +242,13 @@
 
 <!-- ======================= COOKIE BANNER ======================= -->
 <div class="cookie-banner is-hidden" id="cookie-banner" role="dialog" aria-label="Cookies">
-  <p>This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
+  <p data-cms="cookie">This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
   <button type="button" data-cookie="decline">Decline</button>
   <button type="button" data-cookie="accept">Accept</button>
 </div>
 
-<script src="script.js"></script>
+<!-- Supabase podaci (js/config.js) + učitavanje sadržaja iz admin panela (js/content.js) -->
+<script src="js/config.js"></script>
+<script src="js/content.js"></script>
 </body>
 </html>

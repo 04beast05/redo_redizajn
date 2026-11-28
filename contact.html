@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Agency Redo</title>
+  <meta name="description" content="Agency Redo – multimedia agency from Osijek, Croatia.">
+
+  <!-- Naslovi: Monument Extended (mapa fonts/). Tekst: Source Sans 3 (Google Fonts). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="inner-page" data-page="contact">
+
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header is-visible" id="header">
+  <a class="logo" href="index.html" aria-label="Agency Redo – početna">
+    <img src="slike/redo_multimediaagency1.png" alt="Agency Redo">
+  </a>
+
+  <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="core-menu">
+    <span class="menu-label">
+      <span class="text-menu">MENU</span>
+      <span class="text-close">CLOSE</span>
+    </span>
+    <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+  </button>
+</header>
+
+<!-- ======================= MAIN ======================= -->
+<main id="main">
+
+  <section class="contact">
+    <div class="contact-intro">
+      <h1 class="title contact-title" data-cms="contact-title">Let's create<br>something big,<br>together!</h1>
+      <div class="contact-details">
+        <p><span class="f-label">Email</span><a data-cms="email" href="mailto:os.agency.redo@gmail.com">os.agency.redo@gmail.com</a></p>
+        <p><span class="f-label">Phone</span><a data-cms="phone" href="tel:+385000000000">+385 00 000 0000</a></p>
+        <p><span class="f-label">Address</span><span data-cms="address-inline">31 000 Osijek, Hrvatska</span></p>
+      </div>
+    </div>
+
+    <!-- Forma šalje upit na Supabase funkciju "contact" (sprema u bazu + šalje mail preko Resenda) -->
+    <form class="contact-form" id="contact-form" novalidate>
+      <div class="field">
+        <label for="cf-name">Full name</label>
+        <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="120">
+      </div>
+      <div class="field">
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="160">
+      </div>
+      <div class="field">
+        <label for="cf-phone">Phone</label>
+        <input id="cf-phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+      </div>
+      <div class="field">
+        <label for="cf-service">Service you're interested in</label>
+        <select id="cf-service" name="service" required>
+          <option value="" disabled selected hidden></option>
+          <option>Advertising</option>
+          <option>Cinema</option>
+          <option>Experience design</option>
+          <option>Social media</option>
+          <option>Software development</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cf-message">Message <span class="opt">(optional)</span></label>
+        <textarea id="cf-message" name="message" rows="1" maxlength="4000"></textarea>
+      </div>
+      <!-- zaštita od botova (skriveno polje) -->
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button class="cta form-submit" type="submit">
+        <span class="label">Send</span>
+        <span class="arrow"><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg><svg viewBox="0 0 14 8" fill="none" stroke="currentColor"><path d="M0 4h13M9.5 .5 13 4 9.5 7.5"/></svg></span>
+      </button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- Fiksna navigacija dolje u sredini -->
+  <nav class="tab-nav" aria-label="About / Services / Contact">
+    <a class="tab-link" href="about.html">About</a>
+    <a class="tab-link" href="services.html">Services</a>
+    <a class="tab-link active" href="contact.html" aria-current="page">Contact</a>
+  </nav>
+
+</main>
+
+<!-- ======================= FOOTER =======================
+     Broj mobitela i Instagram link promijeni ovdje (na svakoj stranici je isti footer). -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="f-col">
+      <span class="f-label">Contact</span>
+      <a class="f-link" data-cms="phone" href="tel:+385000000000">+385 00 000 0000</a>
+      <a class="f-link" data-cms="email" href="mailto:os.agency.redo@gmail.com">os.agency.redo@gmail.com</a>
+    </div>
+    <div class="f-col">
+      <span class="f-label">Address</span>
+      <p data-cms="address">31 000 Osijek<br>Hrvatska</p>
+    </div>
+    <nav class="f-col" aria-label="Footer">
+      <span class="f-label">Pages</span>
+      <a class="f-link" href="about.html">About</a>
+      <a class="f-link" href="services.html">Services</a>
+      <a class="f-link" href="contact.html">Contact</a>
+    </nav>
+    <div class="f-col">
+      <span class="f-label">Follow</span>
+      <div class="f-icons">
+        <a class="f-icon" data-cms="instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg></a>
+        <a class="f-icon" data-cms="email-link" href="mailto:os.agency.redo@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-row">
+    <p>© <span data-year>2026</span> <span data-cms="copyright">Agency Redo. All rights reserved.</span></p>
+    <a href="#terms">Terms &amp; Conditions</a>
+  </div>
+</footer>
+
+<!-- ======================= MENU OVERLAY ======================= -->
+<div class="core-menu" id="core-menu" aria-hidden="true">
+  <!-- 3D prsten s projektima (9 blokova) -->
+  <div class="ring-scene">
+    <div class="ring" id="ring">
+      <div class="ring-panel ph" data-label="Projekt 1"><!-- <img src="slike/projekt1.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 2"><!-- <img src="slike/projekt2.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 3"><!-- <img src="slike/projekt3.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 4"><!-- <img src="slike/projekt4.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 5"><!-- <img src="slike/projekt5.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 6"><!-- <img src="slike/projekt6.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 7"><!-- <img src="slike/projekt7.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 8"><!-- <img src="slike/projekt8.jpg" alt=""> --></div>
+      <div class="ring-panel ph" data-label="Projekt 9"><!-- <img src="slike/projekt9.jpg" alt=""> --></div>
+    </div>
+  </div>
+
+  <nav class="menu-nav" aria-label="Main">
+    <ul class="menu-main">
+      <li><a href="projects.html#advertising">ADVERTISING</a></li>
+      <li><a href="projects.html#cinema">CINEMA</a></li>
+      <li><a href="projects.html#experience-design">EXPERIENCE DESIGN</a></li>
+    </ul>
+    <ul class="menu-secondary">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+<!-- ======================= COOKIE BANNER ======================= -->
+<div class="cookie-banner is-hidden" id="cookie-banner" role="dialog" aria-label="Cookies">
+  <p data-cms="cookie">This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
+  <button type="button" data-cookie="decline">Decline</button>
+  <button type="button" data-cookie="accept">Accept</button>
+</div>
+
+<!-- Supabase podaci (js/config.js) + učitavanje sadržaja iz admin panela (js/content.js) -->
+<script src="js/config.js"></script>
+<script src="js/content.js"></script>
+</body>
+</html>

@@ -7,14 +7,13 @@
   <meta name="description" content="Agency Redo – multimedia agency from Osijek, Croatia.">
 
   <!-- Naslovi: Monument Extended (mapa fonts/). Tekst: Source Sans 3 (Google Fonts). -->
-  <link rel="preload" href="fonts/MonumentExtended-Ultrabold.otf" as="font" type="font/otf" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="projects-page">
+<body class="inner-page projects-page" data-page="projects">
 
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
 
@@ -33,259 +32,116 @@
   </button>
 </header>
 
-<!-- ======================= MAIN ======================= -->
+<!-- ======================= MAIN =======================
+     Projekti se unose kroz admin panel (admin.html). Ovo ispod je samo primjer
+     koji se prikazuje dok Supabase nije povezan (config.js). -->
 <main id="main">
 
-  <h1 class="section-title projects-title">Projects</h1>
+  <h1 class="section-title projects-title" data-cms="projects-title">Projects</h1>
 
-  <!-- ======== ADVERTISING ======== -->
+  <div id="projects-list">
   <section class="project-category" id="advertising">
     <div class="pcat-head">
       <h2 class="pcat-title">Advertising</h2>
-      <span class="pcat-count">(06)</span>
+      <span class="pcat-count">(04)</span>
     </div>
     <div class="project-grid" data-stagger>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Advertising 01"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 01</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 01&quot;, &quot;category&quot;: &quot;Advertising&quot;, &quot;subtitle&quot;: &quot;Advertising&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Advertising 01"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 01</h3>
+        <p class="pc-meta">Advertising / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Advertising 02"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 02</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 02&quot;, &quot;category&quot;: &quot;Advertising&quot;, &quot;subtitle&quot;: &quot;Advertising&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Advertising 02"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 02</h3>
+        <p class="pc-meta">Advertising / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Advertising 03"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 03</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 03&quot;, &quot;category&quot;: &quot;Advertising&quot;, &quot;subtitle&quot;: &quot;Advertising&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Advertising 03"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 03</h3>
+        <p class="pc-meta">Advertising / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Advertising 04"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 04</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Advertising 05"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 05</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Advertising 06"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 06</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 04&quot;, &quot;category&quot;: &quot;Advertising&quot;, &quot;subtitle&quot;: &quot;Advertising&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Advertising 04"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 04</h3>
+        <p class="pc-meta">Advertising / 2026</p>
       </article>
     </div>
   </section>
 
-  <!-- ======== CINEMA ======== -->
   <section class="project-category" id="cinema">
     <div class="pcat-head">
       <h2 class="pcat-title">Cinema</h2>
-      <span class="pcat-count">(06)</span>
+      <span class="pcat-count">(04)</span>
     </div>
     <div class="project-grid" data-stagger>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Cinema 01"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 01</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 01&quot;, &quot;category&quot;: &quot;Cinema&quot;, &quot;subtitle&quot;: &quot;Cinema&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Cinema 01"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 01</h3>
+        <p class="pc-meta">Cinema / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Cinema 02"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 02</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 02&quot;, &quot;category&quot;: &quot;Cinema&quot;, &quot;subtitle&quot;: &quot;Cinema&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Cinema 02"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 02</h3>
+        <p class="pc-meta">Cinema / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Cinema 03"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 03</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 03&quot;, &quot;category&quot;: &quot;Cinema&quot;, &quot;subtitle&quot;: &quot;Cinema&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Cinema 03"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 03</h3>
+        <p class="pc-meta">Cinema / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Cinema 04"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 04</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Cinema 05"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 05</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Cinema 06"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 06</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 04&quot;, &quot;category&quot;: &quot;Cinema&quot;, &quot;subtitle&quot;: &quot;Cinema&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Cinema 04"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 04</h3>
+        <p class="pc-meta">Cinema / 2026</p>
       </article>
     </div>
   </section>
 
-  <!-- ======== EXPERIENCE DESIGN ======== -->
   <section class="project-category" id="experience-design">
     <div class="pcat-head">
       <h2 class="pcat-title">Experience design</h2>
-      <span class="pcat-count">(06)</span>
+      <span class="pcat-count">(04)</span>
     </div>
     <div class="project-grid" data-stagger>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Experience design 01"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 01</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 01&quot;, &quot;category&quot;: &quot;Experience design&quot;, &quot;subtitle&quot;: &quot;Experience design&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Experience design 01"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 01</h3>
+        <p class="pc-meta">Experience design / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Experience design 02"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 02</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 02&quot;, &quot;category&quot;: &quot;Experience design&quot;, &quot;subtitle&quot;: &quot;Experience design&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Experience design 02"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 02</h3>
+        <p class="pc-meta">Experience design / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Experience design 03"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 03</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 03&quot;, &quot;category&quot;: &quot;Experience design&quot;, &quot;subtitle&quot;: &quot;Experience design&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Experience design 03"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 03</h3>
+        <p class="pc-meta">Experience design / 2026</p>
       </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Experience design 04"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 04</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Experience design 05"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 05</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <!-- data-gallery: slike koje se na hover slože iznad naslovne (odvojene zarezom) -->
-        <div class="pc-media" data-gallery="">
-          <div class="pc-cover ph" data-label="Experience design 06"><!-- <img src="slike/projekt.webp" alt=""> --></div>
-        </div>
-        <div class="pc-info">
-          <h3 class="pc-title">
-            <span class="pc-name">Naziv projekta 06</span>
-            <span class="pc-tagline">Kratki opis projekta u jednoj rečenici.</span>
-          </h3>
-        </div>
+      <article class="project-card" tabindex="0" role="button"
+               data-project="{&quot;title&quot;: &quot;Naziv projekta 04&quot;, &quot;category&quot;: &quot;Experience design&quot;, &quot;subtitle&quot;: &quot;Experience design&quot;, &quot;year&quot;: &quot;2026&quot;, &quot;client&quot;: &quot;Naziv firme&quot;, &quot;location&quot;: &quot;Osijek, Hrvatska&quot;, &quot;website_enabled&quot;: false, &quot;website_url&quot;: &quot;&quot;, &quot;description&quot;: &quot;Kratki opis projekta.&quot;, &quot;goal&quot;: &quot;Cilj i zadatak projekta.&quot;, &quot;cover_url&quot;: &quot;&quot;, &quot;gallery&quot;: [], &quot;gallery_extra&quot;: [], &quot;videos&quot;: []}">
+        <div class="pc-media ph" data-label="Experience design 04"><!-- <img src="slike/projekt.webp" alt="" loading="lazy"> --></div>
+        <h3 class="pc-name">Naziv projekta 04</h3>
+        <p class="pc-meta">Experience design / 2026</p>
       </article>
     </div>
   </section>
+  </div>
 
   <!-- Fiksna navigacija kategorija dolje u sredini (označava kategoriju koju gledaš) -->
-  <nav class="tab-nav project-tabs" aria-label="Kategorije projekata">
+  <nav class="tab-nav project-tabs" id="project-tabs" aria-label="Kategorije projekata">
     <a class="tab-link active" href="#advertising">Advertising</a>
     <a class="tab-link" href="#cinema">Cinema</a>
     <a class="tab-link" href="#experience-design">Experience design</a>
@@ -293,20 +149,36 @@
 
 </main>
 
-<!-- ======================= FOOTER ======================= -->
+<!-- ======================= FOOTER =======================
+     Broj mobitela i Instagram link promijeni ovdje (na svakoj stranici je isti footer). -->
 <footer class="site-footer">
-  <div class="footer-bottom">
-    <div>
-      <p class="footer-address">31 000 Osijek<br>Hrvatska</p>
-      <p class="footer-terms"><a href="#terms">TERMS &amp; CONDITIONS</a></p>
+  <div class="footer-grid">
+    <div class="f-col">
+      <span class="f-label">Contact</span>
+      <a class="f-link" data-cms="phone" href="tel:+385000000000">+385 00 000 0000</a>
+      <a class="f-link" data-cms="email" href="mailto:os.agency.redo@gmail.com">os.agency.redo@gmail.com</a>
     </div>
-    <p class="footer-credit">All rights reserved · <a href="index.html">Agency Redo</a></p>
-    <nav class="footer-nav" aria-label="Footer">
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-      </ul>
+    <div class="f-col">
+      <span class="f-label">Address</span>
+      <p data-cms="address">31 000 Osijek<br>Hrvatska</p>
+    </div>
+    <nav class="f-col" aria-label="Footer">
+      <span class="f-label">Pages</span>
+      <a class="f-link" href="about.html">About</a>
+      <a class="f-link" href="services.html">Services</a>
+      <a class="f-link" href="contact.html">Contact</a>
     </nav>
+    <div class="f-col">
+      <span class="f-label">Follow</span>
+      <div class="f-icons">
+        <a class="f-icon" data-cms="instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg></a>
+        <a class="f-icon" data-cms="email-link" href="mailto:os.agency.redo@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-row">
+    <p>© <span data-year>2026</span> <span data-cms="copyright">Agency Redo. All rights reserved.</span></p>
+    <a href="#terms">Terms &amp; Conditions</a>
   </div>
 </footer>
 
@@ -336,7 +208,7 @@
     <ul class="menu-secondary">
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="mailto:os.agency.redo@gmail.com">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
@@ -344,11 +216,13 @@
 
 <!-- ======================= COOKIE BANNER ======================= -->
 <div class="cookie-banner is-hidden" id="cookie-banner" role="dialog" aria-label="Cookies">
-  <p>This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
+  <p data-cms="cookie">This website uses cookies. By continuing to browse, you accept the use of cookies.</p>
   <button type="button" data-cookie="decline">Decline</button>
   <button type="button" data-cookie="accept">Accept</button>
 </div>
 
-<script src="script.js"></script>
+<!-- Supabase podaci (js/config.js) + učitavanje sadržaja iz admin panela (js/content.js) -->
+<script src="js/config.js"></script>
+<script src="js/content.js"></script>
 </body>
 </html>
