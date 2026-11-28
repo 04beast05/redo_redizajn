@@ -1,0 +1,124 @@
+AGENCY REDO – web stranica (HTML + CSS + JS) + admin panel (Supabase)
+=====================================================================
+
+Pokretanje:
+  Otvori mapu u Visual Studio Codeu i otvori index.html u pregledniku
+  (najbolje preko ekstenzije "Live Server"). Ništa ne treba instalirati.
+  Fontovi: MonumentExtended-Regular.otf i MonumentExtended-Ultrabold.otf moraju biti
+  u mapi fonts/ (pored index.html). Običan tekst je Source Sans 3 (Google Fonts).
+
+Raspored mapa:
+  index.html            – naslovnica (crna)
+  about.html            – About (bijela)
+  services.html         – Services (bijela)
+  projects.html         – projekti po kategorijama (bijela)
+  contact.html          – kontakt forma (bijela)
+  css/style.css         – izgled cijele stranice
+  js/script.js          – animacije, forma, detalj projekta
+  js/content.js         – učitava sadržaj iz admin panela (Supabase) u stranicu
+  js/config.js          – OVDJE upisuješ Supabase podatke
+  admin/admin.html      – admin panel (otvaraš ga kao .../admin/admin.html)
+  admin/admin.css, admin/admin.js
+  supabase/schema.sql          – baza, prava pristupa, spremište (pokreće se jednom)
+  supabase/contact-function.ts – kod Supabase funkcije za kontakt formu (Resend)
+  upute/PROCITAJ.txt    – ove upute
+  slike/, video/, fonts/
+
+Footer (isti na svim stranicama):
+  Broj mobitela i Instagram link još su privremeni – u svakom .html pronađi
+  "+385 00 000 0000" / "tel:+385000000000" i "https://www.instagram.com/"
+  i upiši prave podatke (VS Code: Ctrl+Shift+H = zamijeni u svim datotekama).
+
+Dok Supabase nije povezan:
+  Stranica radi kao i dosad (sadržaj iz HTML-a), a kontakt forma otvara mail
+  program s već popunjenim upitom.
+
+=====================================================================
+POSTAVLJANJE SUPABASEA (jednom, ~15 minuta)
+=====================================================================
+1) Napravi projekt na https://supabase.com (besplatno).
+
+2) Baza: Supabase → SQL Editor → New query → zalijepi CIJELI supabase/schema.sql
+   → Run. Prije toga u datoteci provjeri mail u retku
+     insert into public.admins (email) values ('os.agency.redo@gmail.com')
+   – to je mail kojim ćeš se prijavljivati u admin. (Može ih biti više.)
+
+3) Admin korisnik: Authentication → Users → Add user → Create new user
+   → upiši isti mail i lozinku, uključi "Auto Confirm User".
+   Zatim: Authentication → Sign In / Providers → isključi "Allow new users to sign up"
+   (da se nitko drugi ne može registrirati).
+
+4) js/config.js: Project Settings → API (ili "Data API" / "API Keys") → kopiraj
+     Project URL           → supabaseUrl
+     anon / publishable key → supabaseKey
+   NIKAD ne upisuj "service_role" / "secret" ključ u js/config.js!
+
+5) Kontakt forma (Resend):
+   a) Napravi račun na https://resend.com → API Keys → Create → kopiraj ključ.
+   b) Supabase → Edge Functions → Deploy a new function → Via Editor
+      → ime funkcije: contact → zalijepi sadržaj datoteke supabase/contact-function.ts → Deploy.
+   c) U postavkama funkcije "contact" isključi "Verify JWT" (Enforce JWT verification).
+   d) Edge Functions → Secrets → dodaj:
+        RESEND_API_KEY = ključ s Resenda
+        CONTACT_TO     = os.agency.redo@gmail.com
+        CONTACT_FROM   = Redo <onboarding@resend.dev>
+      Napomena: s onboarding@resend.dev Resend šalje mailove SAMO na mail kojim si
+      se registrirao na Resend. Za pravu upotrebu u Resendu dodaj i potvrdi svoju
+      domenu (Domains) i stavi npr. CONTACT_FROM = Redo <web@tvojadomena.hr>.
+   Svaki upit se sprema i u bazu (admin → Poruke), pa ništa ne propada.
+
+6) Otvori admin/admin.html i prijavi se.
+
+=====================================================================
+ADMIN PANEL (admin/admin.html)
+=====================================================================
+Login je crn, panel bijel, radi na mobitelu, tabletu i računalu.
+
+  Projekti   – klik na projekt otvara uređivač. Promjene se SPREMAJU SAME dok pišeš
+               (dolje piše "Spremljeno ✓ vrijeme"). Novi projekt prvi put spremiš
+               gumbom "Spremi", a dalje se sprema sam.
+               Polja: naslov, kategorija, vrsta (npr. Ads), godina, klijent (firma),
+               lokacija, prekidač "Projekt ima web stranicu" + link (kad je isključen,
+               link se ne prikazuje), kratki opis, cilj i zadatak, naslovna slika,
+               6 fotografija + 4 dodatne (slike i GIF-ovi, uvijek u svom stvarnom
+               formatu – 1080×1350, 1920×1080, 1080×1920, 1080×1080…, po dvije u redu;
+               admin upozori ako broj nije paran), videi, prikaži/sakrij, redoslijed.
+               VIDEI: samo zalijepi YouTube, YouTube Shorts ili Vimeo link u polje –
+               video se odmah doda, prikaže i spremi. Shorts se prikazuju uspravno (9:16).
+  Kategorije – sekcije na stranici Projects i stavke u izborniku.
+  Naslovnica – tekst ispod luka slika (+ link), 4 videa (svaki posebno, s natpisom
+               i linkom), slike u luku (dodaj više odjednom, zamijeni, obriši, poredaj).
+  About      – veliki naslov, video, uvodni tekst, principi.
+  Services   – sekcije usluga i klijenti.
+  Postavke   – mobitel, mail, adresa, Instagram (prazno = sakrij), naslov stranice
+               Contact, naslov stranice Projects, tekst u footeru, cookie obavijest.
+  Poruke     – svi upiti s kontakt forme.
+
+  Sve što spremiš u adminu vidi se na stranici čim je osvježiš (F5).
+  Dok nešto nije uneseno u admin, stranica prikazuje sadržaj iz HTML-a.
+
+  Videi s YouTubea rade kad je stranica otvorena preko interneta ili Live Servera
+  (ne dvoklikom na datoteku). Datoteke za upload: besplatni Supabase do 50 MB.
+
+  Ako si schema.sql već pokrenuo sa starijom verzijom, samo ga pokreni ponovno –
+  doda nova polja projekata i ništa ne briše.
+
+=====================================================================
+STRANICE
+=====================================================================
+Naslovnica: loader (postotak), kategorije s videima i "tekućim" prijelazom,
+  rotirajući luk slika (svaka slika zadržava svoje dimenzije), tekst + About, footer.
+About: naslov (riječi ulaze odozdo), video koji se sužava, tekst, principi.
+Services: usluge, klijenti, cinema usluge.
+Projects: kategorije jedna ispod druge, mreža kartica (4/3/2/1 stupac), naziv i
+  "Vrsta / godina" ispod slike. Klik otvara projekt: naslov, klijent, lokacija,
+  godina, web link (ako je uključen), naslovna slika, opis, cilj i zadatak,
+  fotografije u stvarnom formatu po dvije u redu, videi (YouTube/Shorts/Vimeo)
+  i dodatne fotografije.
+  Navigacija kategorija dolje u sredini sama označi kategoriju koju gledaš.
+Contact: naslov, mail/mobitel/adresa i forma (ime i prezime, mail, mobitel,
+  usluga, poruka) – samo crte za pisanje, bez okvira.
+Izbornik: 3D prsten projekata; slova izbornika mijenjaju boju i dobiju
+  stakleni rub kad prsten prođe iza njih.
+Zajedničko: cookie obavijest, fade prijelaz između stranica, "scramble" slova na
+  linkovima, fiksna navigacija About | Services | Contact na podstranicama.

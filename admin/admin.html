@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin - Agency Redo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ======================= PRIJAVA (crna) ======================= -->
+  <section class="login" id="login" hidden>
+    <form class="login-box" id="login-form">
+      <img class="login-logo" src="../slike/redo_multimediaagency1.png" alt="Agency Redo">
+      <h1>Admin</h1>
+      <label>Email<input type="email" name="email" autocomplete="username" required></label>
+      <label>Lozinka<input type="password" name="password" autocomplete="current-password" required></label>
+      <button class="btn btn-primary" type="submit">Prijava</button>
+      <p class="login-msg" id="login-msg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- ======================= PANEL (bijeli) ======================= -->
+  <section class="panel" id="panel" hidden>
+    <aside class="side">
+      <img class="side-logo" src="../slike/redo_multimediaagency1.png" alt="Agency Redo">
+      <nav class="side-nav" id="side-nav">
+        <button data-tab="projects" class="is-active">Projekti</button>
+        <button data-tab="categories">Kategorije</button>
+        <button data-tab="home">Naslovnica</button>
+        <button data-tab="about">About</button>
+        <button data-tab="services">Services</button>
+        <button data-tab="settings">Postavke</button>
+        <button data-tab="messages">Poruke</button>
+      </nav>
+      <div class="side-bottom">
+        <a href="../index.html" target="_blank" rel="noopener">Otvori stranicu ↗</a>
+        <span class="side-user" id="side-user"></span>
+        <button class="link" id="logout" type="button">Odjava</button>
+      </div>
+    </aside>
+    <main class="content" id="view"></main>
+  </section>
+
+  <!-- poruka kad Supabase nije podešen -->
+  <section class="login" id="no-config" hidden>
+    <div class="login-box">
+      <img class="login-logo" src="../slike/redo_multimediaagency1.png" alt="Agency Redo">
+      <h1>Admin</h1>
+      <p>Supabase još nije povezan. Upiši <b>supabaseUrl</b> i <b>supabaseKey</b> u <code>js/config.js</code>
+      i pokreni <code>supabase/schema.sql</code> (upute su u upute/PROCITAJ.txt).</p>
+    </div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
